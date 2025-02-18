@@ -21,8 +21,10 @@ const commands = commandLoader.load();
 // Client events
 client.on('qr', qr => {
     qrcode.generate(qr, { small: true });
+    console.log('QR String:', qr);  // Add this line to print the QR string
     logger.info('QR code generated');
 });
+
 
 async function getNumber() {
     const info = client.info;
