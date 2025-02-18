@@ -80,8 +80,9 @@ client.getNumber = getNumber;
 
 module.exports.client = client;
 
+client.initialize();
 http.createServer((req, res) => {
-    client.initialize();
+    return res.end('Bot is running');
 }
 ).listen(process.env.PORT || 5000);
 
