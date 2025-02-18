@@ -4,6 +4,8 @@ const config = require('./config');
 const logger = require('./utils/logger');
 const commandLoader = require('./handlers/commandLoader');
 const auth = require('./utils/auth');
+const http = require('http');
+
 const readline = require('readline');
 
 // Initialize client
@@ -78,7 +80,11 @@ client.getNumber = getNumber;
 
 module.exports.client = client;
 
-client.initialize();
+http.createServer((req, res) => {
+    client.initialize();
+}
+).listen(process.env.PORT || 5000);
+
 
 
 process.on("uncaughtException", (err) => {
