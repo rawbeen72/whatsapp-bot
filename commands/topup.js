@@ -80,6 +80,12 @@ module.exports = {
     description: 'Topup mobile balance (usage: !topup [number] [amount])',
     execute: async (msg, args) => {
         try {
+            const adminNumbers = config.adminNumbers;
+            const extractedAdminNumbers = adminNumbers.map(number => number.slice(0, 13));
+            const senderNumber = msg.from.split('@')[0].slice(3);
+            if (!extractedAdminNumbers.includes(senderNumber)) {
+                return msg.reply('🔒 This command is for admins only');
+            }
             // Validate arguments
             if (args.length < 2) {
                 return msg.reply('Invalid format. Usage: !topup [number] [amount]\nExample: !topup 9864461540 10');
