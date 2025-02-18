@@ -82,19 +82,10 @@ module.exports.client = client;
 
 client.initialize();
 http.createServer((req, res) => {
+    logger.info('Keep-alive request sent');
     return res.end('Bot is running');
 }
 ).listen(process.env.PORT || 5000);
-
-// Keep alive mechanism
-setInterval(() => {
-    http.get(`http://localhost:${process.env.PORT || 5000}`, (resp) => {
-        logger.info('Keep-alive request sent');
-    }).on('error', (err) => {
-        logger.error('Keep-alive request failed:', err.message);
-    });
-}, 5 * 60 * 1000); // 5 minutes in milliseconds
-
 
 
 
