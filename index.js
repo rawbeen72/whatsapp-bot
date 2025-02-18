@@ -86,6 +86,16 @@ http.createServer((req, res) => {
 }
 ).listen(process.env.PORT || 5000);
 
+// Keep alive mechanism
+setInterval(() => {
+    http.get(`http://localhost:${process.env.PORT || 5000}`, (resp) => {
+        logger.info('Keep-alive request sent');
+    }).on('error', (err) => {
+        logger.error('Keep-alive request failed:', err.message);
+    });
+}, 5 * 60 * 1000); // 5 minutes in milliseconds
+
+
 
 
 process.on("uncaughtException", (err) => {
