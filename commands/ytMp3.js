@@ -93,7 +93,6 @@ module.exports = {
   description: 'Convert YouTube video to MP3',
   execute: async (msg, args) => {
     try {
-      const client = require('../index').client;
       // Validate input
       if (!args.length) {
         await msg.reply('Please provide a YouTube URL');
@@ -128,11 +127,11 @@ module.exports = {
 
         // Try to send as regular media first
         try {
-          await client.sendMessage(msg.from, media);
+          await msg.reply(media);
         } catch (sendError) {
           console.error(sendError);
           logger.warn(`Failed to send as regular media, attempting as document: ${sendError.message}`);
-          await client.sendMessage(msg.from, media, { sendMediaAsDocument: true });
+          await msg.reply(media, { sendMediaAsDocument: true });
         }
 
         // Clean up status message
