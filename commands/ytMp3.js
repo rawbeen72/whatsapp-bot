@@ -129,6 +129,7 @@ module.exports = {
         try {
           await msg.reply(media);
         } catch (sendError) {
+          console.error(sendError);
           logger.warn(`Failed to send as regular media, attempting as document: ${sendError.message}`);
           await msg.reply(media, { sendMediaAsDocument: true });
         }
@@ -137,11 +138,13 @@ module.exports = {
         await msg.reply('✅ Conversion completed successfully!');
 
       } catch (mediaError) {
+        console.error(mediaError);
         logger.error(`Media preparation failed: ${mediaError.message}`);
         await msg.reply('❌ Failed to prepare media. The file might be too large or unavailable.');
       }
       
     } catch (error) {
+      console.error(error);
       logger.error(`YT MP3 Error: ${error.stack}`);
       await msg.reply('❌ Conversion failed. Please try again later.');
     }
