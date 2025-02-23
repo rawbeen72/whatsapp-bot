@@ -17,7 +17,6 @@ module.exports = {
 
             const recipientNumber = args[0];
             const amount = parseFloat(args[1]);
-
             // Validate phone number format (assuming Nepal phone number format)
             if (!recipientNumber.match(/^9\d{9}$/)) {
                 return msg.reply('❌ Invalid phone number format. Please enter a valid 10-digit number starting with 9');
