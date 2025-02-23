@@ -14,4 +14,5 @@ module.exports = {
     citienCode: process.env.CITIZEN_CODE,
     prabhuAccountId: process.env.PRABHU_ACCOUNT_ID,
     prabhuCode: process.env.PRABHU_CODE,
+    giphyAPIKey: process.env.GIPHY_API_KEY,
 };

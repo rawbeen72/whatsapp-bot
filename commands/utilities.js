@@ -18,6 +18,12 @@ module.exports = {
 !translate [lang] [text] - Translate text
 !shorten [url] - Shorten URLs
 
+*Utility Commands:*
+!weather [location] - Get weather information
+!calc [expression] - Calculate math expressions
+!poll "question" "option1" "option2" - Create a poll
+!define [word] - Look up word definitions
+
 *News & Information:*
 !news [query] - Get latest news articles
 
