@@ -1,8 +1,8 @@
 const TransactionManager = require('../services/transactionManager');
 
 module.exports = {
-    command: '!fund_transfer',
-    description: 'Transfer fund to another user (usage: !fund_transfer [phone_number] [amount])',
+    command: '!fund-transfer',
+    description: 'Transfer fund to another user (usage: !fund-transfer [phone_number] [amount])',
     execute: async (msg, args) => {
         try {
             const adminNumbers = config.adminNumbers;
@@ -12,7 +12,7 @@ module.exports = {
                 return msg.reply('🔒 This command is for admins only');
             }
             if (args.length < 2) {
-                return msg.reply('Invalid format. Usage: !fund_transfer [phone_number] [amount]\nExample: !fund_transfer 9864461540 10');
+                return msg.reply('Invalid format. Usage: !fund-transfer [phone_number] [amount]\nExample: !fund-transfer 9864461540 10');
             }
 
             const recipientNumber = args[0];
