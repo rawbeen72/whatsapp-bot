@@ -1,9 +1,10 @@
 // Array of command objects for multiple commands
-module.exports = [{
+module.exports = [
+  {
     command: '!help',
     description: 'Show all available commands',
     execute: async (msg) => {
-        const helpMessage = `
+      const helpMessage = `
 *🤖 WhatsApp Bot Command Center*
 
 *General Commands:*
@@ -46,44 +47,46 @@ module.exports = [{
 !chat-export - Export chat history
 
 `;
-        await msg.reply(helpMessage);
-    }
-}, {
+      await msg.reply(helpMessage);
+    },
+  },
+  {
     command: '!ping',
     description: 'Check bot responsiveness',
     execute: async (msg) => {
-        // Record start time
-        const startTime = Date.now();
-                
-        // Calculate response time
-        const responseTime = Date.now() - startTime;
-        
-        // Update with response time
-        await msg.reply(`🏓 Pong! Response time: ${responseTime}ms`);
-    }
-}, {
+      // Record start time
+      const startTime = Date.now();
+
+      // Calculate response time
+      const responseTime = Date.now() - startTime;
+
+      // Update with response time
+      await msg.reply(`🏓 Pong! Response time: ${responseTime}ms`);
+    },
+  },
+  {
     command: '!info',
     description: 'Show bot information',
     execute: async (msg) => {
-        // Import package.json for version info
-        const packageInfo = require('../package.json');
-        const os = require('os');
-        
-        // Calculate uptime
-        const uptime = process.uptime();
-        const days = Math.floor(uptime / 86400);
-        const hours = Math.floor((uptime % 86400) / 3600);
-        const minutes = Math.floor((uptime % 3600) / 60);
-        const seconds = Math.floor(uptime % 60);
-        const uptimeString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        
-        // Get system info
-        const memoryUsage = process.memoryUsage();
-        const freeMemory = os.freemem() / 1024 / 1024;
-        const totalMemory = os.totalmem() / 1024 / 1024;
-        
-        // Build info message
-        const infoMessage = `
+      // Import package.json for version info
+      const packageInfo = require('../package.json');
+      const os = require('os');
+
+      // Calculate uptime
+      const uptime = process.uptime();
+      const days = Math.floor(uptime / 86400);
+      const hours = Math.floor((uptime % 86400) / 3600);
+      const minutes = Math.floor((uptime % 3600) / 60);
+      const seconds = Math.floor(uptime % 60);
+      const uptimeString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      // Get system info
+      const memoryUsage = process.memoryUsage();
+      const freeMemory = os.freemem() / 1024 / 1024;
+      const totalMemory = os.totalmem() / 1024 / 1024;
+
+      // Build info message
+      const infoMessage = `
 *🤖 WhatsApp Bot Information*
 
 *Version:* ${packageInfo.version}
@@ -96,7 +99,8 @@ module.exports = [{
 
 Type *!help* to see available commands.
         `;
-        
-        await msg.reply(infoMessage);
-    }
-}];
+
+      await msg.reply(infoMessage);
+    },
+  },
+];
